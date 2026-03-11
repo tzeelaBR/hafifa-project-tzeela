@@ -1,5 +1,7 @@
 import styles from "./FeedbackPopup.module.css";
 import DaniHead from "../../assets/img/dani-head.svg";
+import Alien from "../../assets/img/alien.svg";
+import AirBalloons from "../../assets/img/air-balloons.svg";
 
 const POPUP_CONFIG = {
     correct: {
@@ -8,14 +10,14 @@ const POPUP_CONFIG = {
         showIcon: "dani"
     },
     wrong: {
-        message: "קצת פספסת...",
+        message: "אוי לא, פוצצת משפחת חיזרים חפים משפע!",
         className: styles.wrong,
-        showIcon: "dani"
+        showIcon: "alien"
     },
     timeout: {
         message: "מלאי החמצן שלכם אזל, אולי תצליחו פעם הבאה...",
         className: styles.timeout,
-        showIcon: "dani"
+        showIcon: "balloons"
     }
 };
 
@@ -36,6 +38,14 @@ const FeedbackPopups = ({ type, onClose, onRetry, onBackToGrid }) => {
 
                 {config.showIcon === "dani" && (
                     <img src={DaniHead} className={styles.icon} alt="feedback" />
+                )}
+
+                {config.showIcon === "alien" && (
+                    <img src={Alien} className={styles.icon} alt="feedback" />
+                )}
+
+                {config.showIcon === "balloons" && (
+                    <img src={AirBalloons} className={styles.icon} alt="feedback" />
                 )}
 
                 <div className={styles.btnArea}>

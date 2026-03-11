@@ -29,13 +29,13 @@
     direction: rtl;
 }
 
-.mainWrapper > :first-child {
+.mainWrapper> :first-child {
     flex-shrink: 0;
 }
 
 .backButton {
     position: absolute;
-    top: clamp(5rem, 9vh, 5rem);
+    top: clamp(2rem, 3vh, 5rem);
     right: 5%;
     width: clamp(2rem, 10vw, 2.5rem);
     cursor: pointer;
@@ -81,6 +81,7 @@
     font-size: clamp(1rem, 4.5vw, 1.2rem);
     line-height: 1.35;
     margin-bottom: 2rem;
+    font-family: rubik, sans-serif;
 }
 
 .textSection p {

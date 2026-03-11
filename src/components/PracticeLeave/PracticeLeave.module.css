@@ -1,65 +1,66 @@
 .overlay {
-    position: fixed;
-    direction: rtl;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.6);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-  }
-  
-  .modal {
-    background-color: #1B1B40;
-    border-radius: 30px;
-    padding: 2rem;
-    max-width: 400px;
-    width: 90%;
-    text-align: center;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-    border: solid #F47160 4px;
-  }
-  
-  .modal h2 {
-    font-family: "space-font", sans-serif;
-    margin: 0;
-  }
-  
-  .red {
-    color: #F47160;
-    margin-bottom: 0;
-    margin-top: 5%;
-    font-size: 2rem;
-  }
-  
-  .modal p {
-    margin-bottom: 2rem;
-    font-size: 1rem;
-    line-height: 1.4;
-  }
-  
-  .buttons {
-    display: flex;
-    justify-content: space-around;
-  }
-  
-  .cancel {
-    background-color: #505086;
-    color: white;
-    border: none;
-    padding: 0.7rem 1.6rem;
-    border-radius: 30px;
-    font-size: 1rem;
-  }
-  
-  .confirm {
-    background-color: #F47160;
-    color: white;
-    border: none;
-    padding: 0.7rem 1.6rem;
-    border-radius: 30px;
-    font-size: 1rem;
-  }
+  position: fixed;
+  direction: rtl;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background-color: #1B1B40;
+  border-radius: 30px;
+  padding: 2rem;
+  max-width: 400px;
+  width: 70%;
+  /* width: 90%; */
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  border: solid #F47160 4px;
+}
+
+.modal h2 {
+  font-family: "space-font", sans-serif;
+  margin: 0;
+}
+
+.red {
+  color: #F47160;
+  margin-bottom: 0;
+  margin-top: 5%;
+  font-size: 2rem;
+}
+
+.modal p {
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.cancel {
+  background-color: #505086;
+  color: white;
+  border: none;
+  padding: 0.7rem 1.6rem;
+  border-radius: 30px;
+  font-size: 1rem;
+}
+
+.confirm {
+  background-color: #F47160;
+  color: white;
+  border: none;
+  padding: 0.7rem 1.6rem;
+  border-radius: 30px;
+  font-size: 1rem;
+}

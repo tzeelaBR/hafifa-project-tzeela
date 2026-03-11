@@ -17,7 +17,7 @@
 }
 
 .subjHeader {
-    margin-top: 25%;
+    margin-top: 36%;
     width: 85%;
     color: white;
     font-size: 2rem;
@@ -29,7 +29,7 @@
 
 .daniEnd {
     position: absolute;
-    bottom: 18%;
+    bottom: 23%;
     width: 40%;
     max-width: 280px;
     z-index: 5;
@@ -46,6 +46,9 @@
 
 .halfPlanet {
     width: 180%;
+    flex-shrink: 0;
+    position: absolute;
+    bottom: -45%;
 }
 
 .nextButton {

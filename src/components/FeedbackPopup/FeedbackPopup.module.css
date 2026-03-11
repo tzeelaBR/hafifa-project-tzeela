@@ -1,12 +1,14 @@
 .overlay {
     position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.65);
-
+    direction: rtl;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
     display: flex;
     justify-content: center;
     align-items: center;
-
     z-index: 1000;
 }
 
@@ -14,11 +16,8 @@
     background: white;
     padding: 2rem;
     border-radius: 22px;
-
     text-align: center;
-
     min-width: 280px;
-
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
 }
 
@@ -47,20 +46,22 @@
     align-items: center;
     text-align: center;
     padding: 2rem;
-    animation: slideIn 0.4s ease-out;
+    width: 50%;
+    height: 50%;
+    opacity: 0.95;
+    border-radius: 30px;
 }
 
 .correct {
-    background-color: #6d8c6d;
+    background-color: #6A916C;
 }
 
-/* Greenish/Grey as per image */
 .wrong {
-    background-color: #8c4b4b;
+    background-color: #8F473D;
 }
 
 .timeout {
-    background-color: #a65d50;
+    background-color: #8F473D;
 }
 
 .msg {
