@@ -13,15 +13,14 @@ const Dani = () => {
             <div className={styles.mainWrapper}>
                 <Header />
 
-                <img
-                    src={backBtn}
-                    alt="back"
-                    className={styles.backButton}
-                    onClick={() => navigate("/")}
-                />
-
                 <main className={styles.mainContent}>
-                    <section className={`${styles.textSection} styles.fadeIn`}>
+                    <img
+                        src={backBtn}
+                        alt="back"
+                        className={styles.backButton}
+                        onClick={() => navigate("/")}
+                    />
+                    <section className={`${styles.textSection} ${styles.fadeIn}`}>
                         <p>היי לכולם! </p>
                         <p> אני דני - נציג חלל ותיק.</p>
                         <p>קרה משהו נורא - כדור הארץ תחת מתקפת האסטרואידים הגרועה ביותר שהיא אי פעם חוותה!</p>

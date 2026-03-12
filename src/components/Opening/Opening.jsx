@@ -1,7 +1,7 @@
-import OpeningAnimation from "../../assets/img/loader-animation.gif";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Opening.css";
+import styles from "./Opening.module.css";
+import OpeningAnimation from "../../assets/img/loader-animation.gif";
 
 const Opening = () => {
   const navigate = useNavigate();
@@ -24,7 +24,6 @@ const Opening = () => {
         } else {
           setAnimationPlayed(true);
         }
-
         sessionStorage.setItem("openingShown", "true");
       }, 6500);
 
@@ -32,24 +31,30 @@ const Opening = () => {
     }
   }, []);
 
-
   return (
-    <div className="opening-page">
-      <img src={OpeningAnimation} alt="loader animation" className="opening-gif" />
-      {showContent && (
-        <>
-          <p className={`opening-text ${animationPlayed ? "" : "fade-in"}`}>
-            בלומדה הבאה תעברו שיעור ביסודות פיצוץ אסטרואידים.
-            הלומדה תעבור על חשיבות פיצוץ אסטרואידים, מהו בכלל אסטרואיד,
-            סוגי האסטרואידים הקיימים ולבסוף גם על איך בפרקטיקה מפוצצים אסטרואיד.
-            במהלך הלומדה יהיו תרגולים, ובסוף הלומדה תצאו מוכשרים ליציאה לשטח
-            ופיצוץ אסטרואידים אמיתיים!
-          </p>
-          <button className={`button ${animationPlayed ? "" : "fade-in"}`} onClick={() => navigate("/intro")}>
-            לעמוד הבא
-          </button>
-        </>
-      )}
+    <div className={styles.container}>
+      <div className={styles.mainWrapper}>
+        <img src={OpeningAnimation} alt="loader animation" className={styles.openingGif} />
+
+        {showContent && (
+          <div className={styles.contentOverlay}>
+            <p className={`${styles.openingText} ${animationPlayed ? "" : styles.fadeIn}`}>
+              בלומדה הבאה תעברו שיעור ביסודות פיצוץ אסטרואידים.
+              הלומדה תעבור על חשיבות פיצוץ אסטרואידים, מהו בכלל אסטרואיד,
+              סוגי האסטרואידים הקיימים ולבסוף גם על איך בפרקטיקה מפוצצים אסטרואיד.
+              במהלך הלומדה יהיו תרגולים, ובסוף הלומדה תצאו מוכשרים ליציאה לשטח
+              ופיצוץ אסטרואידים אמיתיים!
+            </p>
+            
+            <button 
+              className={`${styles.nextBtn} ${animationPlayed ? "" : styles.fadeIn}`} 
+              onClick={() => navigate("/intro")}
+            >
+              לעמוד הבא
+            </button>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

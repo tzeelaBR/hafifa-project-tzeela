@@ -9,38 +9,34 @@
     background: #070727;
     box-shadow: 0px 4px 4px rgba(255, 255, 255, 0.25);
     display: flex;
-    flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    padding: 0 clamp(0.5rem, 3vw, 1.2rem);
+    justify-content: center;
+    padding: 0 1rem;
     width: 100%;
     height: clamp(3.5rem, 10vh, 4.5rem);
     box-sizing: border-box;
     flex-shrink: 0;
 }
 
+.logo {
+    position: absolute;
+    right: 1rem;
+    width: clamp(2.2rem, 12vw, 3.4rem);
+    height: auto;
+}
+
 .madorTilLogo {
+    position: absolute;
+    left: 1rem;
     width: clamp(2.2rem, 14vw, 4rem);
     height: auto;
-    margin-left: 2vw;
 }
 
 .title {
     color: #FFFFFF;
     font-family: "space-font";
     font-size: clamp(0.8rem, 4vw, 1.1rem);
-    margin: 0px;
-    text-align: end;
-    flex: 1;
-    margin-right: 6vw;
-}
-
-.logo {
-    width: clamp(2rem, 12vw, 3.4rem);
-    height: auto;
-    margin-right: 2vw;
-}
-
-.headerBg p {
+    margin: 0;
+    text-align: center;
     white-space: nowrap;
 }

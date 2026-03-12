@@ -35,11 +35,11 @@
 
 .backButton {
     position: absolute;
-    top: clamp(2rem, 3vh, 5rem);
+    top: clamp(7rem, 4vh, 7rem);
     right: 5%;
     width: clamp(2rem, 10vw, 2.5rem);
-    cursor: pointer;
-    z-index: 90;
+    z-index: 210;
+    pointer-events: auto;
 }
 
 .startButton {
