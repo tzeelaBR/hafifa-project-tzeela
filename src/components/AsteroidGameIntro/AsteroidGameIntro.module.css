@@ -96,9 +96,12 @@
     font-size: 1.4rem;
     margin-bottom: 1.2rem;
     font-weight: 800;
+    font-family: rubik, sans-serif;
 }
 
 .cardBodyText {
+    margin: 0;
+    padding-bottom: 2vh;
     width: 88%;
     max-width: 400px;
     text-align: center;
@@ -110,11 +113,11 @@
 
 .readyText {
     color: #FFFFFF;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.7rem;
     font-size: clamp(0.9rem, 1rem, 1.2rem);
     pointer-events: auto;
     position: relative;
-    right: -5%;
+    right: -14%;
 }
 
 .startButton {

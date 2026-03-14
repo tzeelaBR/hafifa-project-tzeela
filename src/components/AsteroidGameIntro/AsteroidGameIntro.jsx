@@ -38,7 +38,7 @@ const AsteroidGameIntro = ({ onNext, onBack }) => {
 
                             <button className={styles.startButton} onClick={onNext}>
                                 <span>התחל</span>
-                                <div className={styles.arrowCircle}>»</div>
+                                {/* <div className={styles.arrowCircle}>»</div> */}
                             </button>
                         </div>
 
@@ -47,11 +47,11 @@ const AsteroidGameIntro = ({ onNext, onBack }) => {
                         <div className={styles.planetContainer}>
                             <img src={bluePlanet} alt="blue planet" className={styles.blueHalf} />
                         </div>
-
+{/* 
                         <div className={styles.footer}>
                             <p className={styles.miniTextQuiz}>עדיין לא מוכן?</p>
                             <button className={styles.nextButton} onClick={onBack}>לעמוד הקודם</button>
-                        </div>
+                        </div> */}
                     </div>
                 </main>
             </div>

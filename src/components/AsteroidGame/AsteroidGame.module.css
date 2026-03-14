@@ -1,6 +1,10 @@
 :root {
     --phone-max-width: 450px;
     --phone-max-height: 932px;
+    --correct-green: #AFE2B1;
+    --correct-green-bg: rgba(106, 145, 108, 0.80);
+    --wrong-red: #F47160;
+    --wrong-red-bg: rgba(143, 71, 61, 0.80);
 }
 
 .container {
@@ -27,14 +31,15 @@
     direction: rtl;
 }
 
-.header {
-    width: 100%;
-    height: 4rem;
-    display: flex;
-    align-items: center;
-    padding: 0 1rem;
-    flex-shrink: 0;
-    z-index: 100;
+.screenShake {
+    animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+@keyframes shake {
+    10%, 90% { transform: translate3d(-1px, 0, 0); }
+    20%, 80% { transform: translate3d(2px, 0, 0); }
+    30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+    40%, 60% { transform: translate3d(4px, 0, 0); }
 }
 
 .backButton {
@@ -44,6 +49,7 @@
     width: clamp(2rem, 10vw, 2.5rem);
     cursor: pointer;
     z-index: 90;
+    opacity: 1; 
 }
 
 .mainContent {
@@ -54,6 +60,7 @@
     width: 100%;
     min-height: 0;
     padding-bottom: 2vh;
+    position: relative;
 }
 
 .subjHeader {
@@ -62,7 +69,7 @@
     color: #FFFFFF;
     font-size: clamp(1.5rem, 7vw, 2rem);
     font-family: "space-font";
-    margin: 0.5rem 0 1rem 0;
+    margin: 4.5rem 0 1rem 0;
     flex-shrink: 0;
 }
 
@@ -79,12 +86,12 @@
 .gameCard {
     background-color: #292947;
     border-radius: 35px;
-    width: 80%;
+    width: 85%;
     flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 1rem;
+    padding: 1.5rem 1rem;
     position: relative;
     box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
     overflow: hidden;
@@ -92,18 +99,20 @@
 }
 
 .instructions {
-    color: white;
+    width: 85%;
+    max-width: 400px;
     text-align: center;
-    font-size: 1.1rem;
-    margin-bottom: 1.5rem;
-    line-height: 1.3;
+    color: #FFFFFF;
+    font-size: clamp(1rem, 4.5vw, 1.25rem);
+    line-height: 1.4;
+    flex-shrink: 0;
 }
 
 .gridContainer {
     position: relative;
     width: 90%;
     aspect-ratio: 1/1;
-    max-height: 40vh;
+    max-height: 38vh;
 }
 
 .gridImage {
@@ -126,8 +135,8 @@
     cursor: pointer;
 }
 
-.asteroidImg:active {
-    transform: scale(0.9);
+.asteroidImg {
+    transition: transform 0.1s;
 }
 
 .daniSpeechBubble {
@@ -136,33 +145,35 @@
     left: 5%;
     background-color: #121235;
     border-radius: 20px;
-    padding: 0.5rem 1rem;
+    padding: 0.8rem;
     display: flex;
     align-items: center;
     gap: 10px;
-    width: 45%;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    width: 50%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
     flex-direction: column;
-    justify-content: center;
 }
 
 .daniHead {
-    width: clamp(1.8rem, 18vw, 5.5rem);
-    height: auto;
-    flex-shrink: 0;
+    width: clamp(2.5rem, 15vw, 4.5rem);
 }
 
 .messageText {
     color: white;
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     margin: 0;
+    text-align: center;
 }
+
+.correct { color: var(--correct-green); font-weight: bold; }
+.wrong { color: var(--wrong-red); font-weight: bold; }
+.default { color: white; }
 
 .targetCoordsWrapper {
     position: absolute;
-    bottom: 41px;
-    right: -1%;
-    width: 35%;
+    bottom: 30px;
+    right: -2%;
+    width: 40%;
 }
 
 .spaceshipImg {
@@ -179,41 +190,142 @@
     font-weight: bold;
 }
 
+/* --- Quiz Overlay --- */
+
 .quizOverlay {
     position: absolute;
-    inset: 0;
-    /* background-color: #070727; */
-    background-image: url("../../assets/img/asteroidcircle.svg");
-    background-size: cover;
-    background-position: 50% 50%;
-    background-repeat: no-repeat;
-    height: 100vh;
-    z-index: 200;
+    top: 0; 
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 250;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     padding: 2rem 1rem;
+    overflow: hidden;
+}
+
+.quizBackground {
+    position: absolute;
+    inset: -50%; 
+    background-image: url("../../assets/img/asteroidcircle.svg");
+    background-size: 90%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+    animation: growAsteroid 0.7s forwards ease-out;
+}
+
+.quizCard {
+    background-color: rgba(80, 80, 134, 0.80);
+    backdrop-filter: blur(5px);
+    border-radius: 30px;
+    width: 90%;
+    padding: 4rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    margin-bottom: 7rem;
+    transition: background-color 0.3s ease;
+}
+
+.correctCard {
+    background-color: var(--correct-green-bg);
+}
+
+.wrongCard {
+    background-color: var(--wrong-red-bg);
+}
+
+@keyframes growAsteroid {
+    from { transform: scale(0.1); opacity: 0; }
+    to { transform: scale(1.6); opacity: 1; }
+}
+
+.exploding .quizBackground {
+    animation: explode 0.8s forwards;
+}
+
+@keyframes explode {
+    0% { transform: scale(1.6); filter: brightness(1); }
+    40% { transform: scale(1.8); filter: brightness(2); }
+    100% { transform: scale(3.5); opacity: 0; filter: brightness(4); }
+}
+
+/* --- Timer --- */
+
+.timerWrapper {
+    width: 85%;
+    margin-bottom: 2rem;
+    z-index: 10;
+}
+
+.timerHeader {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 8px;
+    flex-direction: row-reverse;
+}
+
+.timerText {
+    font-weight: bold;
+    font-size: 1rem;
+    color: #7CAA7E;
+    margin: 0;
+    font-family: "space-font";
+}
+
+.lowTimeText {
+    color: var(--wrong-red);
+}
+
+.balloonsIcon {
+    width: 40px;
+    height: 40px;
+    background-color: #7CAA7E;
+    -webkit-mask-image: url("../../assets/img/air-balloons.svg");
+    mask-image: url("../../assets/img/air-balloons.svg");
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    transition: background-color 0.5s ease;
+}
+
+.lowTimeBalloons {
+    background-color: #F47160;
 }
 
 .timerContainer {
-    width: 85%;
-    height: 25px;
-    background-color: #1a1a35;
+    width: 100%;
+    height: 18px;
+    background-color: #070727;
     border-radius: 20px;
+    border: 3px solid #070727;
     overflow: hidden;
-    margin-bottom: 2rem;
 }
 
 .timerBar {
     height: 100%;
-    background: linear-gradient(90deg, #4caf50, #8bc34a);
-    transition: width 1s linear;
+    width: var(--progress);
+    background-color: #7CAA7E;
+    transition: width 1s linear, background-color 0.3s;
+}
+
+.lowTimeBar {
+    background-color: var(--wrong-red);
 }
 
 .questionText {
     color: white;
     text-align: center;
-    font-size: 1.5rem;
+    font-size: clamp(1.3rem, 5vw, 1.7rem);
     margin-bottom: 2rem;
 }
 
@@ -222,20 +334,58 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
+    gap: 0.5rem;
 }
 
 .answerBtn {
-    width: 85%;
-    background-color: #3b3b5e;
+    width: 90%;
+    background-color: #3A184B;
     color: white;
     border: none;
-    border-radius: 15px;
-    padding: 1rem;
-    font-size: 1.1rem;
+    border-radius: 30px;
+    padding: 1.1rem;
+    font-size: 1.15rem;
     cursor: pointer;
 }
 
-.answerBtn:active {
-    background-color: #AB479A;
+.btnCorrect {
+    background-color: var(--correct-green) !important;
+    color: #070727 !important;
+}
+
+.btnWrong {
+    background-color: var(--wrong-red) !important;
+    color: white !important;
+}
+
+.correctPopup, .wrongPopup, .timeoutPopup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.popupTitle {
+    color: white;
+    font-size: clamp(1.4rem, 6vw, 1.8rem);
+    margin-bottom: 2.5rem;
+    font-family: "space-font";
+}
+
+.correctPopup .popupTitle {
+    width: 80%;
+}
+
+.popupIcon {
+    width: clamp(100px, 35vw, 180px);
+    margin-bottom: 2.5rem;
+}
+
+.popupBtn {
+    background: #070727;
+    color: white;
+    padding: 0.9rem 2.8rem;
+    border-radius: 30px;
+    font-size: 1.25rem;
+    border: none;
 }
