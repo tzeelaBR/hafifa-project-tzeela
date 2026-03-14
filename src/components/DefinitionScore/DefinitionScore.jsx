@@ -9,11 +9,16 @@ const TOTAL_QUESTIONS = 5;
 const DefinitionScore = ({ failCount, onFinish }) => {
   const [showConfetti, setShowConfetti] = useState(true);
   const [windowSize, setWindowSize] = useState({ width: window.innerWidth, height: window.innerHeight });
-
   const percentScore = Math.round((TOTAL_QUESTIONS / (TOTAL_QUESTIONS + failCount)) * 100);
+  const handleFinishAndUnlock = () => {
+    const currentProgress = Number(localStorage.getItem("userProgress") || 0);
+    if (currentProgress < 2) {
+      localStorage.setItem("userProgress", "2");
+    }
+    onFinish();
+  };
 
   useEffect(() => {
-    // Shorter timer for a faster "hit and run" feel
     const timer = setTimeout(() => setShowConfetti(false), 3500);
 
     const handleResize = () => setWindowSize({ width: window.innerWidth, height: window.innerHeight });
@@ -27,7 +32,6 @@ const DefinitionScore = ({ failCount, onFinish }) => {
 
   return (
     <div className={styles.container}>
-
       <div className={styles.mainWrapper}>
         <header className={styles.header}></header>
 
@@ -54,7 +58,8 @@ const DefinitionScore = ({ failCount, onFinish }) => {
             </div>
 
             <div className={styles.footer}>
-              <button className={styles.nextButton} onClick={onFinish}>
+              {/* עדכון ה-onClick לפונקציה החדשה שלנו */}
+              <button className={styles.nextButton} onClick={handleFinishAndUnlock}>
                 חזרה לחללית
               </button>
             </div>

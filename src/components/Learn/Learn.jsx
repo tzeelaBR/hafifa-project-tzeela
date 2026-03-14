@@ -5,6 +5,15 @@ import Astronaut from "../../assets/img/astronaut.svg";
 import backBtn from "../../assets/img/back-btn.svg";
 
 const Learn = ({ onBack }) => {
+
+    const handleFinish = () => {
+        const currentProgress = Number(localStorage.getItem("userProgress") || 0);
+        if (currentProgress < 1) {
+            localStorage.setItem("userProgress", "1");
+        }
+        onBack();
+    };
+
     return (
         <div className={styles.container}>
             <div className={styles.mainWrapper}>
@@ -34,7 +43,7 @@ const Learn = ({ onBack }) => {
                     </div>
                 </main>
 
-                <button className={`${styles.button} ${styles.nextButton}`} onClick={onBack}>
+                <button className={`${styles.button} ${styles.nextButton}`} onClick={handleFinish}>
                     הבנתי!
                 </button>
             </div>

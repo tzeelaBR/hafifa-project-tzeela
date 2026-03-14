@@ -83,13 +83,9 @@ export default function AsteroidGame({ onBack }) {
           setPopup(null);
           setIsShaking(true);
           setIsExploding(true);
-
-          // דיליי קצר לפני החלפת הטקסטים
           setTimeout(() => {
             setDaniMessage("אני סומך עליכם!");
             setMessageStatus("default");
-
-            // מעדכנים רק את מה שמוצג בעין (הבועה והטקסט של דני)
             if (displayIndex + 1 < gameData.length) {
               setDisplayIndex(prev => prev + 1);
             }
@@ -108,6 +104,7 @@ export default function AsteroidGame({ onBack }) {
             if (currentIndex + 1 < gameData.length) {
               setCurrentIndex(prev => prev + 1);
             } else {
+              localStorage.setItem("userProgress", "999");
               navigate("/end");
             }
           }, 1400);
