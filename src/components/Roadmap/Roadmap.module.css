@@ -4,7 +4,7 @@
 }
 
 @font-face {
-    font-family: "space-font";
+    font-family: "space-font", serif;
     src: url(../../assets/fonts/OzradCLM/OzradCLM-Bold.otf) format("opentype");
 }
 
